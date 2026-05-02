@@ -60,7 +60,7 @@ jobs:
       run: |
         cd "$KERNEL_ROOT"
         cd ./common
-        wget https://raw.githubusercontent.com/ravindu644/Droidspaces-OSS/refs/heads/main/https://github.com/ravindu644/Droidspaces-OSS/blob/main/Documentation/resources/kernel-patches/non-GKI/path/to/extracted/patchfile.patch
+        wget https://github.com/ravindu644/Droidspaces-OSS/blob/main/Documentation/resources/kernel-patches/non-GKI/path/to/extracted/patchfile.patch
         patch -p1 < /path/to/extracted/patchfile.patch
         cd ../
         echo "CONFIG_SYSCTL=y" >> ./common/arch/arm64/configs/gki_defconfig
