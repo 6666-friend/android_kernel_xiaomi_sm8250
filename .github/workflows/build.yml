@@ -59,8 +59,9 @@ jobs:
     - name: add DroidSpaces
       run: |
         cd "$KERNEL_ROOT"
-        wget https://github.com/ravindu644/Droidspaces-OSS/tree/main/Documentation/resources/kernel-patches/non-GKI/
+        wget https://raw.githubusercontent.com/ravindu644/Droidspaces-OSS/refs/heads/main/Documentation/resources/kernel-patches/non-GKI/01.fix_kernel_panic_in_xt_qtaguid.patch
         patch -p1 < 01.fix_kernel_panic_in_xt_qtaguid.patch
+        wget https://raw.githubusercontent.com/ravindu644/Droidspaces-OSS/refs/heads/main/Documentation/resources/kernel-patches/non-GKI/02.fix_restore cgroup file prefix handling .patch
         patch -p2 < 02.fix_restore cgroup file prefix handling.patch
         cd ../
         echo "CONFIG_SYSCTL=y" >> ./common/arch/arm64/configs/gki_defconfig
