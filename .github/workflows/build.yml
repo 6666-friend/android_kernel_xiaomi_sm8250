@@ -56,6 +56,24 @@ jobs:
         sudo rm -rf "/usr/local/share/boost"
         sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+    - name: add DroidSpaces
+      run: |
+        cd "$KERNEL_ROOT"
+        cd ./common
+        wget https://raw.githubusercontent.com/ravindu644/Droidspaces-OSS/refs/heads/main/https://github.com/ravindu644/Droidspaces-OSS/blob/main/Documentation/resources/kernel-patches/non-GKI/path/to/extracted/patchfile.patch
+        patch -p1 < /path/to/extracted/patchfile.patch
+        cd ../
+        echo "CONFIG_SYSCTL=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_SYSVIPC=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_POSIX_MQUEUE=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_NAMESPACES=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_PID_NS=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_IPC_NS=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_UTS_NS=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_USER_NS=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_DEVTMPFS=y" >> ./common/arch/arm64/configs/gki_defconfig
+        echo "CONFIG_DEVTMPFS_MOUNT=y" >> ./common/arch/arm64/configs/gki_defconfig
+
     - name: Install Dependencies
       run: |
         sudo apt-get update
