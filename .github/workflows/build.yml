@@ -59,8 +59,9 @@ jobs:
     - name: add DroidSpaces
       run: |
         cd "$KERNEL_ROOT"
-        wget https://github.com/ravindu644/Droidspaces-OSS/raw/main/Documentation/resources/kernel-patches/non-GKI/path/to/extracted/patchfile.patch
-        patch -p1 < /path/to/extracted/patchfile.patch
+        wget https://github.com/ravindu644/Droidspaces-OSS/raw/main/Documentation/resources/kernel-patches/non-GKI/
+        patch -p1 < 01.fix_kernel_panic_in_xt_qtaguid.patch
+        patch -p2 < 
         cd ../
         echo "CONFIG_SYSCTL=y" >> ./common/arch/arm64/configs/gki_defconfig
         echo "CONFIG_SYSVIPC=y" >> ./common/arch/arm64/configs/gki_defconfig
