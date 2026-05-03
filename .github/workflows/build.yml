@@ -60,8 +60,8 @@ jobs:
       run: |
         cd "$KERNEL_ROOT"
         wget "https://raw.githubusercontent.com/ravindu644/Droidspaces-OSS/main/Documentation/resources/kernel-patches/non-GKI/01.fix_kernel_panic_in_xt_qtaguid.patch"
-        wget "https://raw.githubusercontent.com/ravindu644/Droidspaces-OSS/main/Documentation/resources/kernel-patches/non-GKI/02.fix_restore%20cgroup%20file%20prefix%20handling%20.patch"
-        patch -p1 < "02.fix_restore cgroup file prefix handling.patch"
+        wget -O patch2.patch "https://raw.githubusercontent.com/ravindu644/Droidspaces-OSS/main/Documentation/resources/kernel-patches/non-GKI/02.fix_restore%20cgroup%20file%20prefix%20handling%20.patch"
+        patch -p1 < patch2.patch
         cd ../
         echo "CONFIG_SYSCTL=y" >> ./common/arch/arm64/configs/gki_defconfig
         echo "CONFIG_SYSVIPC=y" >> ./common/arch/arm64/configs/gki_defconfig
