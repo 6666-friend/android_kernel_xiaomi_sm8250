@@ -56,6 +56,11 @@ jobs:
         sudo rm -rf "/usr/local/share/boost"
         sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+    - name: add DroidSpaces
+      run: |
+        echo "CONFIG_PID_NS=y" >> ./arch/arm64/configs/gki_defconfig
+        echo "CONFIG_IPC_NS=y" >> ./arch/arm64/configs/gki_defconfig
+        
     - name: Install Dependencies
       run: |
         sudo apt-get update
